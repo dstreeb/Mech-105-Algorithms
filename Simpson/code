@@ -1,0 +1,53 @@
+function [I] = Simpson(x, y)
+% Numerical evaluation of integral by Simpson's 1/3 Rule
+% Inputs
+%   x = the vector of equally spaced independent variable
+%   y = the vector of function values with respect to x
+% Outputs:
+%   I = the numerical integral calculated
+if nargin>2
+    error('To many input agrmuents');
+elseif nargin<2
+    error('Enter two inout arguments');
+end
+if length(x)~=length(y)
+    error('For every x value a y value must exist');
+end
+s=x(end);
+q=x(1);
+p=linspace(q,s,length(x));
+I=0;
+if sum(p)~=sum(x)
+    error('Not equal spacing'); 
+end
+a=rem(length(x),2);
+if length(x)==2
+     warning('trap rule used');
+    I=(x(2)-x(1))*((y(2)+y(1))/2);
+ 
+    
+elseif a~=0
+    h=x(2)-x(1);
+    n=length(x);
+    s_4=0;
+    s_2=0;
+    for i=2:2:n
+      s_4=s_4+4*y(i); 
+    end
+    for i=3:2:n-1
+        s_2=s_2+2*y(i);
+    end
+    I=h/3*(y(1)+s_4+s_2+y(n));
+    
+else
+    h=x(2)-x(1);
+    n=length(x);
+    s_4=0;
+    s_2=0;
+    for i=1:2:floor(n-2)
+      I=I+(h/3)*(y(i)+4*y(i+1)+y(i+2));
+    end
+    I=I+(y(end)+y(end-1)*(h/2));
+    warning('trap rule used');
+end
+end
