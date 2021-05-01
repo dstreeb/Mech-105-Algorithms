@@ -10,6 +10,8 @@ Inputs
 * Upper guess on the positive side of the root (Make sure both guesses bracket the root) 
 3.  to
 * Percent  relative errror the program will stop at  ( this number will default to 0.0000001) 
+4. f
+* function you would like to find the root of 
 
 
 Outputs 
