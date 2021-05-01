@@ -1,5 +1,5 @@
 # Mech-105-Algorithms
-Algorithms created for mech 105
+Algorithms created for mech 105 specificaly using numerical methods 
 
 # Algorithms Included Into File 
 ## Bisection 
